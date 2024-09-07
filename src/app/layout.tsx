@@ -8,8 +8,8 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Kinde Auth",
-  description: "Kinde with NextJS App Router",
+  title: "Ridemate",
+  description: "Use AI to find carpoolers",
 };
 
 export default async function RootLayout({
@@ -24,7 +24,7 @@ export default async function RootLayout({
       <body>
         <header>
           <nav className="nav container">
-            <h1 className="text-display-3">KindeAuth</h1>
+            <h1 className="text-display-3">Ridemate</h1>
             <div>
               {!(await isAuthenticated()) ? (
                 <>
@@ -63,7 +63,7 @@ export default async function RootLayout({
         <main>{children}</main>
         <footer className="footer">
           <div className="container">
-            <strong className="text-heading-2">KindeAuth</strong>
+            <strong className="text-heading-2">Ridemate</strong>
             <p className="footer-tagline text-body-3">
               Visit our{" "}
               <Link className="link" href="https://kinde.com/docs">
@@ -72,7 +72,7 @@ export default async function RootLayout({
             </p>
 
             <small className="text-subtle">
-              © 2023 KindeAuth, Inc. All rights reserved
+              © 2023 Ridemate, Inc. All rights reserved
             </small>
           </div>
         </footer>

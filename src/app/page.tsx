@@ -10,7 +10,7 @@ export default function Home() {
         <p className="text-body-1 hero-tagline">Configure your app</p>
 
         <Link
-          href="https://kinde.com/docs/sdks/nextjs-sdk"
+          href="https://www.google.com/"
           target="_blank"
           rel="noreferrer"
           className="btn btn-light btn-big"
