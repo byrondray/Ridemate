@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kinde Starter Kit - NextJS with full App Router support
 
-## Getting Started
+This is a starter kit to get you started with Kinde on Next.js
 
-First, run the development server:
+## Dependancies
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- node.js (>=18)
+- Kinde account - Get free account [here](https://app.kinde.com/register)
+  - Kinde back-end web application setup
+
+## Setup your local environment
+
+1. [Fork](https://github.com/kinde-starter-kits/kinde-nextjs-app-router-starter-kit/fork)
+2. Clone the repository
+
+```
+git clone https://github.com/<your_github_username>/kinde-nextjs-app-router-starter-kit.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Within the project folder install the dependancies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+> cd kinde-nextjs-app-router-starter-kit
+> npm i
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Set up your environment
+   
+Rename `.env.local.sample` to `.env.local`
 
-## Learn More
+Update the file with your application settings.  These can be found within the backend application details within the Kinde dashboard
+```
+KINDE_CLIENT_ID=<your_kinde_client_id>
+KINDE_CLIENT_SECRET=<your_kinde_client_secret>
+KINDE_ISSUER_URL=https://<your_kinde_subdomain>.kinde.com
+```
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Setup Kinde
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Within your back-end web application update your settings
 
-## Deploy on Vercel
+**Allowed callback URLs**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+http://localhost:3000/api/auth/kinde_callback
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Allowed logout redirect URLs**
+
+```
+http://localhost:3000
+```
+
+**Note: When you deploy your application, these URLs will have to be updated accordingly**
+
+
+## Start your app
+
+```
+npm run dev
+```
+
+open `http://localhost:3000` in your browser
+
+## Create your first user
+
+Click on `Sign up` and register your first user for your business!
+
+Within the Kinde Dashboard, you will see your new user listed within the user view. 🚀
+
+# Resources
+- [Kinde Next.js SDK Docs](https://kinde.com/docs/developer-tools/nextjs-sdk/)
+- [Kinde Management API Docs](https://kinde.com/api/docs/#kinde-management-api)
+
+# Get help
+- [Discord](https://discord.gg/wHX6j7wG5d)
+- [Slack](https://join.slack.com/t/thekindecommunity/shared_invite/zt-26hdaavyc-CfOa06vP23guSwK~~OpFMQ)
