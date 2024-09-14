@@ -61,21 +61,6 @@ export default async function RootLayout({
           </nav>
         </header>
         <main>{children}</main>
-        <footer className="footer">
-          <div className="container">
-            <strong className="text-heading-2">Ridemate</strong>
-            <p className="footer-tagline text-body-3">
-              Visit our{" "}
-              <Link className="link" href="https://kinde.com/docs">
-                help center
-              </Link>
-            </p>
-
-            <small className="text-subtle">
-              © 2023 Ridemate, Inc. All rights reserved
-            </small>
-          </div>
-        </footer>
       </body>
     </html>
   );

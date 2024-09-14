@@ -10,7 +10,9 @@
     "migrate": "drizzle-kit migrate",
     "push": "drizzle-kit push",
     "studio": "drizzle-kit studio",
-    "seed": "bun run src/database/seed.ts"
+    "seed": "bun run src/database/seed.ts",
+    "tunnel": "lt --port 3000",
+    "tunnel-pass": "curl https://loca.lt/mytunnelpassword"
   },
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.2.0",
