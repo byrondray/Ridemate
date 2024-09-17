@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import {
   GoogleMap,
   LoadScript,
-  DirectionsService,
   DirectionsRenderer,
 } from "@react-google-maps/api";
 
@@ -15,8 +14,8 @@ export default function Dashboard() {
   };
 
   const center = {
-    lat: 37.7749,
-    lng: -122.4194,
+    lat: 49.2827,
+    lng: -123.1207,
   };
 
   const [origin, setOrigin] = useState("");
@@ -56,17 +55,58 @@ export default function Dashboard() {
           if (status === window.google.maps.DirectionsStatus.OK) {
             setDirectionsResponse(result);
 
+            console.log("Full Directions API Response: ", result);
+
             const route = result?.routes[0];
-            const leg = route?.legs ? route.legs[0] : null;
-            if (leg && leg.duration_in_traffic) {
-              setPredictedTime(leg.duration_in_traffic.text);
-            } else {
-              setPredictedTime(
-                leg?.duration ? leg.duration.text : "Duration not available"
+            if (route) {
+              console.log("Route Summary: ", route.summary);
+              console.log("Bounding Box: ", route.bounds);
+              console.log("Overview Polyline: ", route.overview_polyline);
+              console.log("Warnings: ", route.warnings);
+
+              let totalDuration = 0;
+              route?.legs.forEach((leg, index) => {
+                console.log(`Leg ${index + 1}:`);
+                console.log("Start Address:", leg.start_address);
+                console.log("End Address:", leg.end_address);
+                console.log("Distance:", leg.distance?.text || "N/A");
+                console.log(
+                  "Duration:",
+                  leg.duration ? leg.duration.text : "N/A"
+                );
+                console.log(
+                  "Duration with Traffic:",
+                  leg.duration_in_traffic?.text || "N/A"
+                );
+
+                if (leg.duration_in_traffic) {
+                  totalDuration += leg.duration_in_traffic.value;
+                } else if (leg.duration) {
+                  totalDuration += leg.duration.value;
+                }
+
+                leg.steps.forEach((step, stepIndex) => {
+                  console.log(`Step ${stepIndex + 1}: ${step.instructions}`);
+                  console.log(
+                    `Distance: ${step.distance?.text || "N/A"}, Duration: ${
+                      step.duration?.text || "N/A"
+                    }`
+                  );
+                });
+              });
+
+              const hours = Math.floor(totalDuration / 3600);
+              const minutes = Math.floor((totalDuration % 3600) / 60);
+              const totalTimeString = `${hours} hours and ${minutes} minutes`;
+
+              setPredictedTime(totalTimeString);
+
+              console.log(
+                `Total predicted travel time (including traffic): ${totalTimeString}`
               );
             }
           } else {
-            console.error(`Error fetching directions ${result}`);
+            console.error(`Error fetching directions: ${status}`);
           }
         }
       );
@@ -107,7 +147,7 @@ export default function Dashboard() {
       </div>
 
       {predictedTime && (
-        <p>Predicted Travel Time with Traffic: {predictedTime}</p>
+        <p>Predicted Total Travel Time with Traffic: {predictedTime}</p>
       )}
 
       <LoadScript
