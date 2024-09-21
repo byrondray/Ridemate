@@ -18,4 +18,4 @@ RUN bun next build
 EXPOSE 3000 8000
 
 # Start both Next.js in production and WebSocket server
-CMD ["sh", "-c", "bun next start & bun run ws-server.ts"]
+CMD ["sh", "-c", "bun next start"]
