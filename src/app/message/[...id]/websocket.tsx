@@ -12,8 +12,6 @@ export default function Chat({
   const [newMessage, setNewMessage] = useState("");
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
-  console.log("Chat params:", { userId, recipientId });
-
   useEffect(() => {
     const ws = new WebSocket("ws://localhost:8000");
 

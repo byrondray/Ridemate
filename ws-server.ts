@@ -3,16 +3,17 @@ import { WebSocketServer, WebSocket } from "ws";
 const wss = new WebSocketServer({ port: 8000 });
 const clients = new Map<string, WebSocket>();
 
-function heartbeat() {
-  console.log(clients.size, "clients");
-  for (const [userId, ws] of clients) {
-    if (ws.readyState === WebSocket.OPEN) {
-      ws.send(JSON.stringify({ type: "ping" }));
-    }
-  }
-}
+// function heartbeat() {
+//   console.log(clients.size, "clients");
+//   // @ts-ignore
+//   for (const [userId, ws] of clients) {
+//     if (ws.readyState === WebSocket.OPEN) {
+//       ws.send(JSON.stringify({ type: "ping" }));
+//     }
+//   }
+// }
 
-setInterval(heartbeat, 1000); // Send a ping every second for demo
+// setInterval(heartbeat, 1000);
 
 wss.on("connection", (ws) => {
   let userId: string | null = null;
