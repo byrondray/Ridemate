@@ -36,7 +36,7 @@ export default async function RootLayout({
               ) : (
                 <div className="profile-blob">
                   {user?.picture ? (
-                    <Image  
+                    <img
                       className="avatar"
                       src={user?.picture}
                       alt="user profile avatar"

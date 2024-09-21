@@ -8,7 +8,7 @@ export const checkAndStoreKindeUser = async () => {
     const user = await getUser();
 
     if (!user) {
-      throw new Error("No user found in Kinde session.");
+      return;
     }
 
     let storedUser = await getUserById(user.id);
