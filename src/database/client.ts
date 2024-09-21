@@ -11,6 +11,8 @@ if (!url) throw new Error("Missing db url env variable");
 const authToken = process.env.AUTH_TOKEN;
 if (!authToken && !isDev) throw new Error("Missing db auth token env variable");
 
+console.log("DB URL:", url, isDev);
+
 export const config = {
   url,
   authToken,

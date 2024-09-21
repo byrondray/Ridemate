@@ -17,6 +17,7 @@
   "dependencies": {
     "@kinde-oss/kinde-auth-nextjs": "^2.2.0",
     "@libsql/client": "^0.10.0",
+    "@next/env": "^14.2.13",
     "@react-google-maps/api": "^2.19.3",
     "@types/next": "^9.0.0",
     "@types/node": "20.11.5",
