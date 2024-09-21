@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import {
   GoogleMap,
   LoadScript,
@@ -74,6 +74,7 @@ export default function Dashboard() {
                   "Duration:",
                   leg.duration ? leg.duration.text : "N/A"
                 );
+
                 console.log(
                   "Duration with Traffic:",
                   leg.duration_in_traffic?.text || "N/A"
@@ -149,20 +150,21 @@ export default function Dashboard() {
       {predictedTime && (
         <p>Predicted Total Travel Time with Traffic: {predictedTime}</p>
       )}
-
-      <LoadScript
-        googleMapsApiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
-      >
-        <GoogleMap
-          mapContainerStyle={mapContainerStyle}
-          center={center}
-          zoom={10}
+      <Suspense fallback={<div>Loading...</div>}>
+        <LoadScript
+          googleMapsApiKey={`${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`}
         >
-          {directionsResponse && (
-            <DirectionsRenderer directions={directionsResponse} />
-          )}
-        </GoogleMap>
-      </LoadScript>
+          <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            center={center}
+            zoom={10}
+          >
+            {directionsResponse && (
+              <DirectionsRenderer directions={directionsResponse} />
+            )}
+          </GoogleMap>
+        </LoadScript>
+      </Suspense>
     </div>
   );
 }
