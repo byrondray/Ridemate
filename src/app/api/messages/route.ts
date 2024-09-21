@@ -29,7 +29,7 @@ export async function POST(request: Request): Promise<Response> {
       senderId,
       recipientId,
     });
-    
+
     return NextResponse.json(newMessage, { status: 201 });
   } catch (error) {
     return NextResponse.json(
