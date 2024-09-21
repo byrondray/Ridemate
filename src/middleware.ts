@@ -7,8 +7,6 @@ export default function middleware(req: Request) {
   return withAuth(req);
 }
 
-// const protectedRoutes = ["/dashboard"];
-
 export const config = {
-  matcher: [],
+  matcher: ["/dashboard"],
 };
