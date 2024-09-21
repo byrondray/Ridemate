@@ -12,7 +12,7 @@ export default async function Home() {
   return (
     <div className="container">
       {users!.map((item) => (
-        <Link href={`/message/${user!.id}/${item.id}`}>
+        <Link key={item.id} href={`/message/${user!.id}/${item.id}`}>
           <div key={item.id}>
             <h1>{item.firstName}</h1>
             <p>{item.email}</p>
