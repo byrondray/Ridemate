@@ -44,3 +44,5 @@ next-env.d.ts
 bun.lockb
 
 vite.config.ts.timestamp*
+
+serviceAccountKey.json

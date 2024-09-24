@@ -1,4 +1,4 @@
-import Chat from "./websocket";
+import Chat from "./chat";
 
 export default function CombinedChat({
   params,
