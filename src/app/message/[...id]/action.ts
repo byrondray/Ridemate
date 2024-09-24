@@ -1,7 +1,5 @@
 "use server";
 
-import { ref, push } from "firebase/database";
-import { getDatabaseInstance } from "@/database/firebase";
 import { createMessage, getConversationForUsers } from "@/services/messages";
 import { v4 as uuid } from "uuid";
 
@@ -19,14 +17,6 @@ export async function sendMessage(
     });
 
     console.log("newMessage", newMessage);
-
-    const database = getDatabaseInstance();
-    const messageRef = ref(database, "messages/");
-    await push(messageRef, {
-      userId,
-      message: message,
-      recipientId,
-    });
 
     return { success: true, newMessage };
   } catch (error) {
